@@ -1,0 +1,261 @@
+/* Reset dan base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Karla', sans-serif;
+  background: #fafafa;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Container untuk pengaturan lebar */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Header */
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+}
+.logo span {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #222;
+}
+
+/* Navbar */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+nav ul li a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #222;
+  padding: 8px 0;
+  transition: color 0.25s;
+}
+nav ul li a:hover {
+  color: #1976d2;
+}
+
+/* Search */
+.search-container {
+  display: flex;
+  border: 1.5px solid #ccc;
+  border-radius: 20px;
+  overflow: hidden;
+  align-items: center;
+}
+.search-container input {
+  border: none;
+  padding: 6px 12px;
+  outline: none;
+  font-size: 1rem;
+}
+.search-container button {
+  background: #1976d2;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 1.15rem;
+  transition: background 0.3s ease;
+}
+.search-container button:hover {
+  background: #1565c0;
+}
+
+/* Hero Section */
+.hero {
+  background: url('https://i.ibb.co/5nKWw5y/mie-banner.jpg') center/cover no-repeat;
+  height: 350px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  max-width: 600px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Varian Rasa Section */
+.varian-rasa {
+  background: #222;
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+}
+.varian-rasa h2 {
+  text-transform: lowercase;
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+.varian-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  justify-content: center;
+}
+.varian-image img {
+  width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 0.6);
+}
+.varian-desc {
+  max-width: 250px;
+  text-align: left;
+  font-weight: 700;
+}
+.varian-desc h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.2rem;
+}
+.varian-desc p {
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+/* Product Section */
+.product-section {
+  padding: 40px 0;
+}
+.product-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #1976d2;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 25px;
+}
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
+  padding-bottom: 15px;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.product-card:hover {
+  box-shadow: 0 10px 25px rgb(0 0 0 / 0.25);
+  transform: translateY(-6px);
+}
+.product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background: #f8f8f8;
+}
+.product-card h3 {
+  margin: 12px 8px 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+}
+.price {
+  font-size: 1.1rem;
+  color: #1976d2;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.btn-buy {
+  background-color: #1976d2;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+.btn-buy:hover {
+  background-color: #145ea8;
+}
+
+/* About Section */
+.about-section {
+  background: white;
+  padding: 50px 0;
+  text-align: center;
+}
+.about-section h2 {
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1976d2;
+}
+.about-section p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* Footer */
+footer {
+  background-color: #1976d2;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .varian-content {
+    flex-direction: column;
+  }
+}
