@@ -1,190 +1,481 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Animasi Nembak Cewek Lucu</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zetsu - Mie Instan Premium</title>
   <style>
-    body {
-      background: #ffe6f0;
-      font-family: 'Comic Sans MS', cursive;
+    /* Reset */
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(18, 18, 18, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 1rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: background 0.3s ease;
+    }
+
+    header:hover {
+      background: rgba(18, 18, 18, 0.95);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .logo img {
+      width: 38px;
+      height: 38px;
+      border-radius: 5px;
+      object-fit: cover;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      font-size: 1rem;
+    }
+
+    nav a {
+      position: relative;
+      padding: 0.3rem 0;
+      color: #eee;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #ff4c29;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      color: #ff4c29;
+    }
+
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+
+    /* Hero Banner */
+    .hero {
+      position: relative;
+      height: 90vh;
+      background: url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1400&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2rem;
+      text-align: center;
       overflow: hidden;
     }
 
-    .scene {
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 76, 41, 0.7), rgba(255, 115, 49, 0.55));
+      mix-blend-mode: multiply;
+      z-index: 0;
+      backdrop-filter: brightness(0.75);
+    }
+
+    .hero-content {
       position: relative;
-      width: 100vw;
-      height: 100vh;
+      z-index: 1;
+      max-width: 900px;
+      color: #fff;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      line-height: 1.2;
+      text-shadow: 2px 4px 14px rgba(0, 0, 0, 0.7);
     }
 
-    .boy, .girl {
-      position: absolute;
-      bottom: 0;
-      width: 100px;
-      height: 150px;
-      background-size: cover;
-    }
-
-    .boy {
-      left: -120px;
-      background-image: url('https://i.imgur.com/rfRJff3.png');
-      animation: moveBoy 5s forwards;
-    }
-
-    .girl {
-      right: 100px;
-      background-image: url('https://i.imgur.com/1dq5sRI.png');
-    }
-
-    @keyframes moveBoy {
-      to {
-        left: 200px;
-      }
-    }
-
-    .dialog {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #fff0f5;
-      border: 3px dashed hotpink;
-      padding: 25px;
-      border-radius: 20px;
-      display: none;
-      text-align: center;
-      animation: fadeIn 1s ease-in-out;
-      box-shadow: 0 0 15px hotpink;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    .btn-yes, .btn-no {
-      margin: 10px;
-      padding: 12px 25px;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 12px;
-      transition: all 0.3s;
-    }
-
-    .btn-yes {
-      background-color: #ff69b4;
+    /* Section varian rasa */
+    .varian-rasa {
+      margin-top: -6rem;
+      padding: 4rem 2rem 6rem;
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1200&q=80') center/cover no-repeat fixed;
+      box-shadow: inset 0 0 0 2000px rgb(18 18 18 / 0.9);
       color: white;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      user-select: none;
     }
 
-    .btn-no {
-      background-color: #ccc;
-      color: #333;
+    .varian-rasa h2 {
+      flex: 1 1 100%;
+      font-weight: 300;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      text-transform: lowercase;
+      margin-bottom: 2rem;
+      user-select: text;
+      text-align: left;
     }
 
-    .btn-yes:hover {
-      background-color: #ff1493;
+    .varian-img {
+      flex: 1 1 320px;
+      border-radius: 15px;
+      box-shadow: 0 30px 40px rgb(0 0 0 / 0.9);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.5s ease;
+      position: relative;
+      min-height: 210px;
     }
 
-    .btn-no:hover {
-      background-color: #aaa;
+    .varian-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 40px 70px rgb(255 76 41 / 0.8);
+      z-index: 2;
     }
 
-    .result {
-      margin-top: 20px;
-      font-weight: bold;
-      font-size: 18px;
+    .varian-img img {
+      width: 100%;
+      max-height: 210px;
+      height: 100%;
+      object-fit: cover;
+      vertical-align: middle;
+      display: block;
     }
 
-    /* Hati terbang */
-    .heart {
-      position: absolute;
-      color: red;
-      animation: flyUp 3s ease-out forwards;
+    .varian-text {
+      flex: 1 1 350px;
+      font-weight: 700;
+      font-size: 1.7rem;
+      letter-spacing: 0.4px;
+      user-select: text;
+      line-height: 1.3;
+      user-select: text;
+      color: #ffebe6;
     }
 
-    @keyframes flyUp {
-      to {
-        transform: translateY(-120vh) rotate(720deg);
-        opacity: 0;
+    .varian-text span {
+      display: block;
+      margin-top: 0.6rem;
+      font-weight: 300;
+      font-size: 1.3rem;
+      color: #ff4c29aa;
+      letter-spacing: 1px;
+    }
+
+    /* Products */
+    .products {
+      max-width: 1200px;
+      margin: 3rem auto 6rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .product-card {
+      background-color: #1f1f1f;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgb(255 76 41 / 0.5);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 40px rgb(255 76 41 / 0.9);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 1.3rem 1.5rem 2rem;
+      flex-grow: 1;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-name {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #ff4c29;
+    }
+
+    .btn-order {
+      background: #ff4c29;
+      color: white;
+      font-weight: 700;
+      padding: 0.7rem 1rem;
+      border-radius: 30px;
+      text-align: center;
+      transition: background 0.3s ease;
+      display: inline-block;
+      user-select:none;
+    }
+
+    .btn-order:hover,
+    .btn-order:focus {
+      background: #e43e22;
+      outline: none;
+    }
+
+    /* About Section */
+    .about-section {
+      background: #1f1f1f;
+      color: #eee;
+      max-width: 900px;
+      border-radius: 20px;
+      margin: 0 auto 4rem;
+      padding: 3rem 3rem 4rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      box-shadow: 0 0 25px rgb(255 76 41 / 0.5);
+      user-select:none;
+    }
+
+    .about-section h2 {
+      font-size: 2.7rem;
+      font-weight: 800;
+      margin-bottom: 1.3rem;
+      color: #ff4c29;
+      user-select:text;
+    }
+
+    .about-section p,
+    .about-section strong {
+      color: #ddd;
+      user-select:text;
+    }
+
+    .about-section strong {
+      display: block;
+      margin: 1rem 0 1.2rem;
+      font-weight: 700;
+      color: #ff7043;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: #1a1a1a;
+      color: #eee;
+      font-size: 1rem;
+      letter-spacing: 0.02rem;
+      user-select:none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .varian-rasa {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        margin-top: 0;
+        border-radius: 0;
+        box-shadow:none;
+      }
+
+      .varian-img {
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+        min-height: auto;
+      }
+
+      .varian-text {
+        text-align: center;
+        font-size: 1.5rem;
+        color: #ffbeaa;
+      }
+
+      .varian-rasa h2 {
+        text-align: center;
       }
     }
 
-    /* Efek hujan */
-    .rain {
-      position: absolute;
-      width: 2px;
-      height: 15px;
-      background: #00f;
-      animation: drop 1s linear infinite;
-      opacity: 0.5;
-    }
-
-    @keyframes drop {
-      0% {
-        transform: translateY(-20px);
+    @media (max-width: 600px) {
+      .products {
+        grid-template-columns: 1fr;
       }
-      100% {
-        transform: translateY(100vh);
+      header {
+        padding: 1rem 1.5rem;
+      }
+      nav {
+        gap: 1.25rem;
       }
     }
   </style>
 </head>
-<body>
-  <audio id="bgm" autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-  </audio>
 
-  <div class="scene">
-    <div class="boy"></div>
-    <div class="girl"></div>
-    <div class="dialog" id="dialog">
-      <p>Halo lita, gw pengen kenal lu lebih jauh dari yg gw pikirkan maka dari itu<br>Bolehkah gw jadi cowok lu?</p>
-      <button class="btn-yes" onclick="jawab(true)">Iyaa 😍</button>
-      <button class="btn-no" onclick="jawab(false)">Temenan aja 😅</button>
-      <div class="result" id="result"></div>
+<body>
+
+  <header>
+    <div class="logo" tabindex="0">
+      <img src="logo zetsu.jpg" alt="Zetsu Logo" />
+      <span>zetsu</span>
     </div>
-    <div id="hearts"></div>
-    <div id="rain"></div>
-  </div>
+
+    <nav role="navigation" aria-label="Primary">
+      <a href="#home" tabindex="0">Home</a>
+      <a href="#product" tabindex="0">product</a>
+      <a href="#about" tabindex="0">About</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero" role="banner" aria-label="Hero banner with noodles image and slogan">
+    <div class="hero-content">
+      Partner Terbaik di Setiap Bab Kehidupan.
+    </div>
+  </section>
+
+  <section class="varian-rasa" aria-labelledby="varian-title">
+    <h2 id="varian-title">varian rasa</h2>
+    <div class="varian-img" tabindex="0" role="img" aria-label="Gambar kemasan mie instan rasa rendang">
+      <img src="mie rendang.jpg" alt="Mi Instan Goreng Rendang" />
+    </div>
+    <div class="varian-text">
+      Trending<span>Mi Rendang</span>
+    </div>
+  </section>
+
+  <section id="product" class="products" aria-label="Daftar produk mie instan">
+    <!-- Product cards akan dibuat otomatis dengan JS -->
+  </section>
+
+  <section id="about" class="about-section" tabindex="0">
+    <h2>Tentang Kami</h2>
+    <p>Berdiri tegak sejak tahun 2017, Mie ZETSU bukan sekadar hidangan mie biasa—ini adalah perjalanan rasa yang telah matang dan teruji waktu. Kami percaya bahwa rasa yang luar biasa berasal dari proses yang disiplin dan bahan yang berkualitas, prinsip yang kami pegang teguh selama bertahun-tahun.</p>
+    <strong>Mengapa Anda Harus Memilih Mie ZETSU?</strong>
+    <p><strong>Resep Otentik yang Diperkuat (2017 - Sekarang):</strong> Kami menggunakan resep rahasia yang telah disempurnakan. Setiap helai mie kami diproses dengan cermat, dipadukan dengan bumbu khas ZETSU dan topping daging premium yang selalu segar.</p>
+    <p><strong>Kualitas Tanpa Kompromi:</strong> Sejak hari pertama di tahun 2017, komitmen kami untuk menyajikan mie yang lezat dan higienis tidak pernah goyah. Kami hanya memilih bahan-bahan terbaik untuk kepuasan pelanggan sejati.</p>
+    <p><strong>Konsistensi Rasa Legendaris:</strong> Kami bangga dengan konsistensi rasa yang membuat Mie ZETSU menjadi pilihan utama. Anda akan menikmati cita rasa yang sama persis, seotentik gigitan pertama Anda, lima tahun lalu.</p>
+    <p><strong>Variasi untuk Semua Selera:</strong> Jelajahi menu kami, mulai dari Mie Ayam Klasik ZETSU hingga varian Pedas Kuah Hitam yang misterius. Setiap menu dibuat untuk memberikan kejutan dan kenikmatan.</p>
+    <p><strong>Mie ZETSU:</strong> Cita Rasa Konsisten, Kualitas Bertahan Sejak 2017.</p>
+    <p><strong>Kelezatan Sejati, Warisan Rasa Mie ZETSU (Established 2017).</strong></p>
+    <p>Ajak Konsumen: Kunjungi gerai kami atau pesan Mie ZETSU sekarang. Nikmati mie yang telah menjadi favorit dan bagian dari perjalanan kuliner kami sejak tahun 2017!</p>
+  </section>
+
+  <footer>
+    &copy; 2017 Zetsu Mie Instan Premium<br>Made in Indonesia
+  </footer>
 
   <script>
-    // Tampilkan dialog setelah animasi jalan selesai
-    setTimeout(() => {
-      document.getElementById("dialog").style.display = "block";
-    }, 5200);
+    const productData = [
+      { name: " Mi Goreng richeese fire lvl 3", img: " Mi Goreng richeese fire lvl 3.jpg" },
+      { name: "Indomie Goreng rasa cabe ijo", img: "gambar aja/Indomie Goreng rasa cabe ijo.jpg" },
+      { name: "Indomie Goreng rasa sambal matah", img: "gambar aja/Indomie Goreng rasa sambal matah.jpg" },
+      { name: "WOW Spageti Rasa aglio olio", img: "gambar aja/WOW Spageti Rasa aglio olio.jpg" },
+      { name: "Lucky Me pancit canton kalamansi", img: "Lucky Me pancit canton kalamansi.jpg" },
+      { name: "Mie gaga 100 extra pedas goreng chipotle", img: "Mie gaga 100 extra pedas goreng chipotle.jpg" },
+      { name: "Mie gelas", img: "mie gelas.jpg" },
+      { name: "Mie gaga rasa lada hitam", img: "Mie gaga rasa lada hitam.jpg" },
+      { name: "Indomie rasa ayam panggang", img: "Indomie rasa ayam panggang.jpg" },
+      { name: "Mie sedaap rasa kari spesial", img: "Mie sedaap rasa kari spesial.jpg" },
+      { name: "Pop mie rasa kari ayam", img: "Pop mie rasa kari ayam.jpg" },
+      { name: "MI BonCabe Rasa mie goreng", img: "MI BonCabe Rasa mie goreng.jpg" },
+      { name: "Buldak spicy Ramen", img: "Buldak spicy Ramen.jpg" },
+      { name: "Indomie rasa dendeng balado", img: "gambar aja/Indomie rasa dendeng balado.jpg" },
+      { name: "mi ABC rasa sapi pedas", img: "gambar aja/mi ABC rasa sapi pedas.jpg" },
+      { name: "lemonilo RASA pedas korea", img: "gambar aja/lemonilo RASA pedas korea.jpg" },
+      { name: "MI INSTAN Richeese Ramen keju", img: "gambar aja/MI INSTAN Richeese Ramen keju.jpg" },
+      { name: "Indomie goreng rasa pedas", img: "gambar aja/Indomie goreng rasa pedas.jpg" },
+      { name: "Indomie goreng premium rasa takoyaki", img: "gambar aja/Indomie goreng premium rasa takoyaki.jpg" },
+      { name: "Indomie goreng nyemek banglahdese", img: "Indomie goreng nyemek banglahdese.jpg" },
+      { name: "sarimi goreng rasa AYAM KECAP", img: "sarimi goreng rasa AYAM KECAP.jpg" },
+      { name: "Supermi rasa all varian", img: "Supermi rasa all varian.jpg" },
+      { name: "Indomie goreng aceh", img: "Indomie goreng aceh.jpg" },
+      { name: "mi sakura goreng dan rasa seblak jeletot", img: "mi sakura goreng dan rasa seblak jeletot.jpg" },
+      { name: "Mie Ayam", img: "Mie Ayam.jpg" },
+      { name: "MI GACOAN", img: "MI GACOAN.jpg" },
+      { name: "Mie SEDAP SELECTION KOREAN SPICY CHICKEN", img: "Mie SEDAP SELECTION KOREAN SPICY CHICKEN.jpg" },
+      { name: "Mi sukses isi 2 RASA SOTO MIE", img: "Mi sukses isi 2 RASA SOTO MIE.jpg" },
+      { name: "Indomie RASA COTO MAKASSAR", img: "Indomie RASA COTO MAKASSAR.jpg" },
+      { name: "Indomie premium Rasa TORI KARA", img: "Indomie premium Rasa TORI KARA.jpg" },
+    ];
 
-    function jawab(diterima) {
-      const res = document.getElementById("result");
-      const hearts = document.getElementById("hearts");
-      const rain = document.getElementById("rain");
+    const productSection = document.getElementById('product');
 
-      if (diterima) {
-        res.innerHTML = "Yuhu Jadi cowoknya Lita ";
-        // Buat efek hati terbang
-        for (let i = 0; i < 30; i++) {
-          const heart = document.createElement("div");
-          heart.className = "heart";
-          heart.style.left = Math.random() * 100 + "vw";
-          heart.style.top = "90vh";
-          heart.style.fontSize = Math.random() * 30 + 20 + "px";
-          heart.innerHTML = "❤️";
-          hearts.appendChild(heart);
-          setTimeout(() => heart.remove(), 3000);
-        }
-      } else {
-        res.innerHTML = "Gapapa, masih bisa temenan kok 😅";
-        // Buat efek hujan sedih
-        for (let i = 0; i < 50; i++) {
-          const drop = document.createElement("div");
-          drop.className = "rain";
-          drop.style.left = Math.random() * 100 + "vw";
-          drop.style.animationDuration = (Math.random() + 0.5) + "s";
-          rain.appendChild(drop);
-          setTimeout(() => drop.remove(), 1500);
-        }
-      }
-    }
+    productData.forEach(product => {
+      const card = document.createElement('article');
+      card.classList.add('product-card');
+      card.innerHTML = `
+      <div class="product-image">
+        <img src="${product.img}" alt="Mie Instan varian ${product.name}" />
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">${product.name}</h3>
+        <a class="btn-order" href="https://wa.me/6281389369845?text=Saya ingin pesan Mie ZETSU varian ${encodeURIComponent(product.name)}" target="_blank" rel="noopener" aria-label="Pesan Mie ZETSU varian ${product.name} sekarang via WhatsApp">Pesan Sekarang</a>
+      </div>`;
+      productSection.appendChild(card);
+    });
   </script>
+
 </body>
+
 </html>
